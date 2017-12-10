@@ -14,10 +14,10 @@
 
 @interface QQNewsCell ()
 
-/// 图片
-@property (nonatomic, strong) UIImageView *newsImageView;
 /// 标题
 @property (nonatomic, strong) UILabel *newsTitleLabel;
+/// 图片
+@property (nonatomic, strong) UIImageView *newsImageView;
 /// 副标题
 @property (nonatomic, strong) UILabel *newsSubTitleLabel;
 /// 跟帖数
@@ -30,7 +30,6 @@
 - (void)setViewModel:(QQNewsViewModel *)viewModel {
     _viewModel = viewModel;
     
-//    [self.newsImageView sd_setImageWithURL:viewModel.imgsrc_url];
     [self.newsImageView sd_setImageWithURL:viewModel.imgsrc_url placeholderImage:[UIImage imageNamed:@"qq_news_placeholder"]];
     self.newsTitleLabel.text = viewModel.news.title;
     self.newsSubTitleLabel.text = viewModel.news.digest;
@@ -66,21 +65,21 @@
     [self addSubview:self.newsSubTitleLabel];
     [self addSubview:self.replyCountLabel];
     
-//    [self.newsImageView mas_makeConstraints:^(MASConstraintMaker *make) {
-//        make.top.equalTo(self).offset(8);
-//        make.left.equalTo(self).offset(16);
-//        make.bottom.equalTo(self).offset(-8);
-//        make.width.mas_equalTo(112);
-//    }];
     [self.newsTitleLabel mas_makeConstraints:^(MASConstraintMaker *make) {
         make.top.equalTo(self).offset(10);
         make.left.equalTo(self).offset(10);
         make.right.equalTo(self).offset(-10);
     }];
+    [self.newsImageView mas_makeConstraints:^(MASConstraintMaker *make) {
+        make.top.equalTo(self.newsTitleLabel.mas_bottom).offset(10);
+        make.left.equalTo(self.newsTitleLabel);
+        make.right.equalTo(self.newsTitleLabel);
+        make.height.mas_equalTo(300);
+    }];
     [self.newsSubTitleLabel mas_makeConstraints:^(MASConstraintMaker *make) {
-        make.top.equalTo(_newsTitleLabel.mas_bottom).offset(10);
-        make.left.equalTo(_newsTitleLabel);
-        make.right.equalTo(_newsTitleLabel);
+        make.top.equalTo(self.newsImageView.mas_bottom).offset(10);
+        make.left.equalTo(self.newsImageView);
+        make.right.equalTo(self.newsImageView);
     }];
     [self.replyCountLabel mas_makeConstraints:^(MASConstraintMaker *make) {
         make.bottom.equalTo(self).offset(-10);
@@ -89,14 +88,6 @@
 }
 
 #pragma mark - Getters and Setters
-- (UIImageView *)newsImageView {
-    if (_newsImageView == nil) {
-        _newsImageView = [[UIImageView alloc] init];
-        _newsImageView.image = [UIImage imageNamed:@"qq_news_placeholder"];
-    }
-    return _newsImageView;
-}
-
 - (UILabel *)newsTitleLabel {
     if (_newsTitleLabel == nil) {
         _newsTitleLabel = [[UILabel alloc] init];
@@ -106,6 +97,14 @@
         _newsTitleLabel.numberOfLines = 0;
     }
     return _newsTitleLabel;
+}
+
+- (UIImageView *)newsImageView {
+    if (_newsImageView == nil) {
+        _newsImageView = [[UIImageView alloc] init];
+        _newsImageView.image = [UIImage imageNamed:@"qq_news_placeholder"];
+    }
+    return _newsImageView;
 }
 
 - (UILabel *)newsSubTitleLabel {

@@ -138,10 +138,10 @@
 		1808DDA81FDD8B860094F45D /* ViewModel */ = {
 			isa = PBXGroup;
 			children = (
-				1808DDA91FDD8B860094F45D /* QQNewsViewModel.h */,
-				1808DDAA1FDD8B860094F45D /* QQNewsListViewModel.m */,
-				1808DDAB1FDD8B860094F45D /* QQNewsViewModel.m */,
 				1808DDAC1FDD8B860094F45D /* QQNewsListViewModel.h */,
+				1808DDAA1FDD8B860094F45D /* QQNewsListViewModel.m */,
+				1808DDA91FDD8B860094F45D /* QQNewsViewModel.h */,
+				1808DDAB1FDD8B860094F45D /* QQNewsViewModel.m */,
 			);
 			path = ViewModel;
 			sourceTree = "<group>";

@@ -50,11 +50,16 @@ static CGFloat const margin = 10;
     NSMutableDictionary *attrs = [NSMutableDictionary dictionary];
     attrs[NSFontAttributeName] = [UIFont systemFontOfSize:16];
     _cellHeight += 10;
+    // `标题`高度
     _cellHeight += [self.news.title boundingRectWithSize:textMaxSize options:NSStringDrawingUsesLineFragmentOrigin attributes:attrs context:nil].size.height;
     _cellHeight += 10;
+    // `图片`高度
+    _cellHeight += 300;
+    _cellHeight += 10;
+    // `描述`高度
     _cellHeight += [self.news.digest boundingRectWithSize:textMaxSize options:NSStringDrawingUsesLineFragmentOrigin attributes:@{NSFontAttributeName : [UIFont systemFontOfSize:14]} context:nil].size.height;
     _cellHeight += 10;
-    // 跟帖高度
+    // `跟帖`高度
     _cellHeight += 15;
     _cellHeight += 10;
     NSLog(@"%s-%f", __FUNCTION__, _cellHeight);
